@@ -45,24 +45,39 @@ module.exports ={
        return sub
     },
     isSameLength: function(a1, a2){
-        if (array.length == 0 ){
-            console.log("Array Empty")
+        if(a1.length == a2.length){
+            return true;
         }
+        else 
+            return false;
     },
     reverse: function(array){
-        if (array.length == 0 ){
-            console.log("Array Empty")
-        }
+       var rev = [];
+       for(i = array.length; i >=0; i--){
+          rev.push(array[i]); 
+       }
+       return rev;
     },
     swap: function(array, index1, index2){
-        if (array.length == 0 ){
-            console.log("Array Empty")
-        }
+       var temp = array[index1];
+       array[index1] = array[index2];
+       array[index2] = temp;
+       return array
     },
     contains: function(array, value){
-        if (array.length == 0 ){
-            console.log("Array Empty")
+        return this.indexOf(array, value) != 1;    
+    },
+    concatenate: function(a1, a2){
+        var temp = [];
+        for(let i = 0; i < a1.length; i++){
+            temp.push(a1[i]);
         }
+        for(let i = 0; i < a2.length; i++){
+            temp.push(a2[i]);
+        }
+       return temp
+        
+
     },
 }
 
