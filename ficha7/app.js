@@ -2,13 +2,16 @@ const express = require('express')
 const mysql = require('mysql2')
 const app = express()
 const port = 3000
+const swaggerFile = require('./swagger_output.json');
+const swaggerUi = require('swagger-ui-express');
 
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
-
 
 
 var connection = mysql.createConnection({
