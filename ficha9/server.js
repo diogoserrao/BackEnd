@@ -82,7 +82,8 @@ sequelize.sync()
 });
 
 app.get("/persons", (req, res) => {
-    Persons.findAll().then(users => {
+    Persons.findAll()
+    .then(users => {
     res.send(users);
     });
 });
