@@ -14,7 +14,7 @@ const User = UserDataModel(sequelize_instance, DataTypes);
 const Loan = LoanDataModel(sequelize_instance, DataTypes);
 
 User.hasMany(Loan, {foreignKey: 'user_id'});
-Loan.belongsTo(Loan, {foreignKey: 'user_id'});
+Loan.belongsTo(User, {foreignKey: 'user_id'});
 
 Book.hasMany(Loan, {foreignKey: 'book_id'});
 Loan.belongsTo(Book, {foreignKey: 'book_id'});

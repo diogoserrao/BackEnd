@@ -2,10 +2,12 @@ const { request } = require("../app");
 const Loans = require("../models/Loans");
 
 const Loan = require("../sequelize").Loan;
+const Book = require("../sequelize").Book;
+const User = require("../sequelize").User;
 
 exports.getAllLoans = async (req, res, next) => {
    try{
-    var loans = await Loan.findAll({include: [{model: Users}, {model: Book}]});
+    var loans = await Loan.findAll({include: [{model: User}, {model: Book}]});
     res.send(loans);
    }catch (error) {
         res.status(401).send("Erros occured: " + error);
@@ -37,11 +39,8 @@ exports.deleteLoan = (req, res, next) => {
 exports.updateLoan = (req, res, next) => {
    const body = req.body;
    Loans.update({
-      loan_id: body.loan_id,
       return_date: body.return_date,
-      loan_date: body.loan_date,
-      user_id: body.user_id,
-      book_id: body.book_id
+      loan_date: body.loan_date
        }, {
        where: {
            id: req.params.id
